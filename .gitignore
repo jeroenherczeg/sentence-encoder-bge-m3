@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# FastAPI specific
+.pytest_cache/
+
+# Docker
+.docker/
+
+# Kubernetes
+*.kubeconfig
+
+# Model files (if you're not versioning these)
+*.pth
+*.pt
+*.bin
+*.onnx
+models/
+
+# Large files (adjust as needed)
+*.csv
+*.json
+*.pkl
+
+# Environment variables
+.env
+.env.*
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Profiling
+*.prof
+
+# Mypy
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Poetry
+poetry.lock
+
+# Pyenv
+.python-version
