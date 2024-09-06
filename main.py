@@ -1,15 +1,12 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
-import numpy as np
 from typing import List
 
 app = FastAPI()
 
-# Global variable to track if the model is loaded
 model_loaded = False
-
-# Load the model at startup
 model = None
 
 class SentenceInput(BaseModel):
@@ -18,11 +15,13 @@ class SentenceInput(BaseModel):
 class EncodingOutput(BaseModel):
     encodings: List[List[float]]
 
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     global model, model_loaded
     model = SentenceTransformer("BAAI/bge-m3")
     model_loaded = True
+    yield
+    model_loaded = False
 
 @app.post("/encode", response_model=EncodingOutput)
 async def encode_sentences(input: SentenceInput):

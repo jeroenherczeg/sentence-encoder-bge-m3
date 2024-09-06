@@ -34,13 +34,13 @@ This project provides a high-performance API for generating sentence embeddings 
 2. Create a virtual environment and install dependencies:
    ```
    python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   source venv/bin/activate
    pip install -r requirements.txt
    ```
 
 3. Run the FastAPI server:
    ```
-   uvicorn api.main:app --reload
+   uvicorn main:app --reload
    ```
 
 4. Access the API at `http://localhost:8000` and the interactive docs at `http://localhost:8000/docs`
@@ -72,6 +72,10 @@ This project provides a high-performance API for generating sentence embeddings 
 
 **Endpoint**: `POST /encode`
 
+```bash
+curl -X POST "http://localhost:8000/encode" -H "Content-Type: application/json" -d '{"sentences": ["Hello, world!", "This is a test sentence."]}'
+```
+
 **Request Body**:
 ```json
 {
@@ -89,10 +93,19 @@ This project provides a high-performance API for generating sentence embeddings 
 }
 ```
 
-### Health Checks
+### Kubernetes Health Probes
 
-- Readiness: `GET /readiness`
-- Liveness: `GET /liveness`
+**Endpoint**: `GET /readiness`
+
+```bash
+curl http://localhost:8000/readiness
+```
+
+**Endpoint**: `GET /liveness`
+
+```bash
+curl http://localhost:8000/liveness
+```
 
 ## Model Information
 

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentence-encoder-bge-m3
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sentence-encoder-bge-m3
+  template:
+    metadata:
+      labels:
+        app: sentence-encoder-bge-m3
+    spec:
+      containers:
+      - name: sentence-encoder-bge-m3
+        image: jeroenherczeg/sentence-encoder-bge-m3:0.0.1
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+          limits:
+            cpu: "1"
+            memory: "2Gi"
