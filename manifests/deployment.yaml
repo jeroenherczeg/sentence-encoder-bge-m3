@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sentence-encoder-bge-m3
-        image: jeroenherczeg/sentence-encoder-bge-m3:0.0.1
+        image: jeroenherczeg/sentence-encoder-bge-m3:0.0.2
         ports:
         - containerPort: 8000
         readinessProbe:
